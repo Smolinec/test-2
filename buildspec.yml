@@ -14,6 +14,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - mv target/*.war
 artifacts:
   files:
-    - target/test-memory-h-2-0.0.1-SNAPSHOT.war
+    - test-memory-h-2-0.0.1-SNAPSHOT.war
