@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entity",
+        "place": "Place",
+        "device": "Device",
+        "temperature": "Temperature",
+        "values": "Values",
+        "webUser": "Web User",
+        "role": "Role",
+        "pushNotificationToken": "Push Notification Token",
+        "application": "Application",
+        "deviceProfile": "Device Profile",
+        "deviceConfiguration": "Device Configuration",
+        "smsNotification": "SMS Notification",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

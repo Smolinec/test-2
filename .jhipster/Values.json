@@ -1,0 +1,41 @@
+{
+  "name": "Values",
+  "fields": [
+    {
+      "fieldName": "value",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "temperature",
+      "otherEntityRelationshipName": "values",
+      "relationshipName": "temperature",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "temperature",
+      "otherEntityRelationshipName": "values",
+      "relationshipName": "temperature",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210205064322",
+  "entityTableName": "values",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
