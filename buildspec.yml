@@ -16,7 +16,9 @@ phases:
       - echo Build completed on `date`
       - VERSION=$(./mvnw org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout -s config/settings.xml)
       - echo ${VERSION}
-      - mv target/test-memory-h-2-${VERSION}.war test-memory-h-2-${VERSION}.war
+#      - mv target/test-memory-h-2-${VERSION}.war test-memory-h-2-${VERSION}.war
 artifacts:
   files:
-    - test-memory-h-2-${VERSION}.war
+    - target/test-memory-h-2-${VERSION}.war
+  #    - test-memory-h-2-${VERSION}.war
+  discard-paths: yes
