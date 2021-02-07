@@ -1,0 +1,25 @@
+{
+  "testMemoryH2App": {
+    "temperatureValues": {
+      "home": {
+        "title": "Temperature Values",
+        "createLabel": "Create a new Temperature Values",
+        "createOrEditLabel": "Create or edit a Temperature Values",
+        "notFound": "No Temperature Values found"
+      },
+      "created": "A new Temperature Values is created with identifier {{ param }}",
+      "updated": "A Temperature Values is updated with identifier {{ param }}",
+      "deleted": "A Temperature Values is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Temperature Values {{ id }}?"
+      },
+      "detail": {
+        "title": "Temperature Values"
+      },
+      "value": "Value",
+      "timestamp": "Timestamp",
+      "temperature": "Temperature",
+      "temperature": "Temperature"
+    }
+  }
+}

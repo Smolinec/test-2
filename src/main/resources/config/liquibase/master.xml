@@ -14,7 +14,23 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204106_added_entity_Place.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204206_added_entity_Device.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204306_added_entity_Temperature.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204406_added_entity_TemperatureValues.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204506_added_entity_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204606_added_entity_PushNotificationToken.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204706_added_entity_Application.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204806_added_entity_DeviceProfile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204906_added_entity_DeviceConfiguration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207205006_added_entity_SMSNotification.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210207204106_added_entity_constraints_Place.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204206_added_entity_constraints_Device.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204306_added_entity_constraints_Temperature.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204406_added_entity_constraints_TemperatureValues.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204506_added_entity_constraints_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210207204806_added_entity_constraints_DeviceProfile.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
