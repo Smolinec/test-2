@@ -1,0 +1,34 @@
+{
+  "name": "Application",
+  "fields": [
+    {
+      "fieldName": "fileName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "data",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210207204130",
+  "entityTableName": "application",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

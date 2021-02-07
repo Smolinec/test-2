@@ -1,0 +1,33 @@
+{
+  "name": "PushNotificationToken",
+  "fields": [
+    {
+      "fieldName": "token",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "pushNotificationToken",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210207204030",
+  "entityTableName": "push_notification_token",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

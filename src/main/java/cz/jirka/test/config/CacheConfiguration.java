@@ -47,6 +47,20 @@ public class CacheConfiguration {
             createCache(cm, cz.jirka.test.domain.User.class.getName());
             createCache(cm, cz.jirka.test.domain.Authority.class.getName());
             createCache(cm, cz.jirka.test.domain.User.class.getName() + ".authorities");
+            createCache(cm, cz.jirka.test.domain.Place.class.getName());
+            createCache(cm, cz.jirka.test.domain.Device.class.getName());
+            createCache(cm, cz.jirka.test.domain.Device.class.getName() + ".deviceProfiles");
+            createCache(cm, cz.jirka.test.domain.Temperature.class.getName());
+            createCache(cm, cz.jirka.test.domain.Temperature.class.getName() + ".temperatureValues");
+            createCache(cm, cz.jirka.test.domain.TemperatureValues.class.getName());
+            createCache(cm, cz.jirka.test.domain.TemperatureValues.class.getName() + ".temperatures");
+            createCache(cm, cz.jirka.test.domain.Role.class.getName());
+            createCache(cm, cz.jirka.test.domain.PushNotificationToken.class.getName());
+            createCache(cm, cz.jirka.test.domain.Application.class.getName());
+            createCache(cm, cz.jirka.test.domain.DeviceProfile.class.getName());
+            createCache(cm, cz.jirka.test.domain.DeviceProfile.class.getName() + ".devices");
+            createCache(cm, cz.jirka.test.domain.DeviceConfiguration.class.getName());
+            createCache(cm, cz.jirka.test.domain.SMSNotification.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

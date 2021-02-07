@@ -1,0 +1,49 @@
+{
+  "name": "Temperature",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createTimestamp",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "lastUpdateTimestamp",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "device",
+      "otherEntityRelationshipName": "temperature",
+      "relationshipName": "device",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "temperatureValues",
+      "otherEntityRelationshipName": "temperature",
+      "relationshipName": "temperatureValues",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210207203730",
+  "entityTableName": "temperature",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
