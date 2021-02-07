@@ -1,0 +1,112 @@
+
+entity Place {
+	name String
+}
+
+entity Device{
+	uuid String
+    appVersion String
+    idUpdated Boolean
+}
+
+relationship ManyToOne{
+	Device{place} to Place
+}
+
+entity Temperature{
+	name String
+    address String
+    createTimestamp ZonedDateTime
+    lastUpdateTimestamp ZonedDateTime
+}
+
+relationship ManyToOne{
+	Temperature{device} to Device
+}
+
+entity TemperatureValues{
+	value Double
+    timestamp ZonedDateTime
+}
+
+relationship ManyToMany{
+	TemperatureValues{temperature} to Temperature{temperatureValues}
+}
+
+/*
+entity WebUser{
+    firstName String
+    lastName String
+    email String
+    password String
+}
+
+*/
+entity Role{
+    name String
+}
+
+relationship ManyToMany{
+	Role{user} to User{role}
+}
+
+relationship ManyToMany{
+	Place{user} to User{place}
+}
+
+relationship ManyToOne{
+	TemperatureValues{temperature} to Temperature
+}
+
+entity PushNotificationToken{
+    token String
+    timestamp ZonedDateTime
+}
+
+service all with serviceImpl except PushNotification
+
+relationship ManyToMany{
+	User{pushNotificationToken} to PushNotificationToken{user}
+}
+
+entity Application{
+    fileName String
+    data Blob
+    version String
+    timestamp ZonedDateTime
+}
+
+entity DeviceProfile{
+	name String
+}
+
+relationship ManyToMany{
+	DeviceProfile{device} to Device{deviceProfile}
+}
+
+entity DeviceConfiguration{
+    primaryHostname String
+    secondaryHostname String
+    port Integer
+}
+
+entity SMSNotification{
+    telNumber String
+    message String
+    createdTimestamp ZonedDateTime
+    uuidDevice String
+    isSending Boolean
+    sendingTimestamp ZonedDateTime
+    isSend Boolean
+    sendTimestamp ZonedDateTime
+    alertType AlertType
+    featureSend ZonedDateTime
+}
+
+enum AlertType{
+	INFO("Info")
+    WARN("Warn")
+    ERROR("Error")
+    DEBUG("Debug")
+    UNKNOWN("Unknown")
+}
