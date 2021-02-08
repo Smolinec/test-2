@@ -80,11 +80,10 @@ public class RoleResource {
     /**
      * {@code GET  /roles} : get all the roles.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of roles in body.
      */
     @GetMapping("/roles")
-    public List<Role> getAllRoles(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<Role> getAllRoles() {
         log.debug("REST request to get all Roles");
         return roleService.findAll();
     }

@@ -1,13 +1,12 @@
 package cz.jirka.test.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Place.
@@ -27,12 +26,9 @@ public class Place implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "place_web_user",
-               joinColumns = @JoinColumn(name = "place_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "web_user_id", referencedColumnName = "id"))
-    private Set<WebUser> webUsers = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "places", allowSetters = true)
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -56,29 +52,17 @@ public class Place implements Serializable {
         this.name = name;
     }
 
-    public Set<WebUser> getWebUsers() {
-        return webUsers;
+    public User getUser() {
+        return user;
     }
 
-    public Place webUsers(Set<WebUser> webUsers) {
-        this.webUsers = webUsers;
+    public Place user(User user) {
+        this.user = user;
         return this;
     }
 
-    public Place addWebUser(WebUser webUser) {
-        this.webUsers.add(webUser);
-        webUser.getPlaces().add(this);
-        return this;
-    }
-
-    public Place removeWebUser(WebUser webUser) {
-        this.webUsers.remove(webUser);
-        webUser.getPlaces().remove(this);
-        return this;
-    }
-
-    public void setWebUsers(Set<WebUser> webUsers) {
-        this.webUsers = webUsers;
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

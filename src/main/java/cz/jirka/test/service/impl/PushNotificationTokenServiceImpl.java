@@ -6,6 +6,8 @@ import cz.jirka.test.repository.PushNotificationTokenRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,15 +39,19 @@ public class PushNotificationTokenServiceImpl implements PushNotificationTokenSe
     @Transactional(readOnly = true)
     public List<PushNotificationToken> findAll() {
         log.debug("Request to get all PushNotificationTokens");
-        return pushNotificationTokenRepository.findAll();
+        return pushNotificationTokenRepository.findAllWithEagerRelationships();
     }
 
+
+    public Page<PushNotificationToken> findAllWithEagerRelationships(Pageable pageable) {
+        return pushNotificationTokenRepository.findAllWithEagerRelationships(pageable);
+    }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<PushNotificationToken> findOne(Long id) {
         log.debug("Request to get PushNotificationToken : {}", id);
-        return pushNotificationTokenRepository.findById(id);
+        return pushNotificationTokenRepository.findOneWithEagerRelationships(id);
     }
 
     @Override

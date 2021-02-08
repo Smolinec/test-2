@@ -13,11 +13,11 @@
   "relationships": [
     {
       "relationshipType": "many-to-many",
-      "otherEntityName": "webUser",
+      "otherEntityName": "user",
       "otherEntityRelationshipName": "pushNotificationToken",
-      "relationshipName": "webUser",
+      "relationshipName": "user",
       "otherEntityField": "id",
-      "ownerSide": false
+      "ownerSide": true
     }
   ],
   "changelogDate": "20210205082645",

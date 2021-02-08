@@ -24,17 +24,6 @@
 
     <changeSet id="20210205082545-1-relations" author="jhipster">
 
-        <createTable tableName="role_web_user">
-            <column name="web_user_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="role_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="role_id, web_user_id" tableName="role_web_user"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

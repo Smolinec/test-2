@@ -12,12 +12,6 @@
                 <dd>
                     <span>{{ role.name }}</span>
                 </dd>
-                <dt><span jhiTranslate="testMemoryH2App.role.webUser">Web User</span></dt>
-                <dd>
-                    <span *ngFor="let webUser of role.webUsers; let last = last">
-                        <a [routerLink]="['/web-user', webUser?.id, 'view']">{{ webUser.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

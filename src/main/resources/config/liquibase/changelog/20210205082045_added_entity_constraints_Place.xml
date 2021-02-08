@@ -8,17 +8,11 @@
     -->
     <changeSet id="20210205082045-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="place_id"
-                                 baseTableName="place_web_user"
-                                 constraintName="fk_place_web_user_place_id"
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="place"
+                                 constraintName="fk_place_user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="place"/>
+                                 referencedTableName="jhi_user"/>
 
-        <addForeignKeyConstraint baseColumnNames="web_user_id"
-                                 baseTableName="place_web_user"
-                                 constraintName="fk_place_web_user_web_user_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="web_user"/>
-        
     </changeSet>
 </databaseChangeLog>

@@ -28,6 +28,17 @@
 
     <changeSet id="20210205082645-1-relations" author="jhipster">
 
+        <createTable tableName="push_notification_token_user">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="push_notification_token_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="push_notification_token_id, user_id" tableName="push_notification_token_user"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

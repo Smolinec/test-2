@@ -24,7 +24,7 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="testMemoryH2App.place.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="testMemoryH2App.place.webUser">Web User</span></th>
+                    <th scope="col" ><span jhiTranslate="testMemoryH2App.place.user">User</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -33,9 +33,7 @@
                     <td><a [routerLink]="['/place', place.id, 'view']">{{ place.id }}</a></td>
                     <td>{{ place.name }}</td>
                     <td>
-                        <span *ngFor="let webUser of place.webUsers; let last = last">
-                            <a class="form-control-static" [routerLink]="['/web-user', webUser?.id, 'view']">{{ webUser.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
+                        {{ place.user?.id }}
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

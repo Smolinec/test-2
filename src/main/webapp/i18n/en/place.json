@@ -17,7 +17,7 @@
         "title": "Place"
       },
       "name": "Name",
-      "webUser": "Web User"
+      "user": "User"
     }
   }
 }

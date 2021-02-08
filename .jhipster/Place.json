@@ -8,12 +8,11 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "webUser",
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
       "otherEntityRelationshipName": "place",
-      "relationshipName": "webUser",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "relationshipName": "user",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20210205082045",

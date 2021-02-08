@@ -6,8 +6,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Role.
@@ -26,13 +24,6 @@ public class Role implements Serializable {
 
     @Column(name = "name")
     private String name;
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "role_web_user",
-               joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "web_user_id", referencedColumnName = "id"))
-    private Set<WebUser> webUsers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -54,31 +45,6 @@ public class Role implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<WebUser> getWebUsers() {
-        return webUsers;
-    }
-
-    public Role webUsers(Set<WebUser> webUsers) {
-        this.webUsers = webUsers;
-        return this;
-    }
-
-    public Role addWebUser(WebUser webUser) {
-        this.webUsers.add(webUser);
-        webUser.getRoles().add(this);
-        return this;
-    }
-
-    public Role removeWebUser(WebUser webUser) {
-        this.webUsers.remove(webUser);
-        webUser.getRoles().remove(this);
-        return this;
-    }
-
-    public void setWebUsers(Set<WebUser> webUsers) {
-        this.webUsers = webUsers;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

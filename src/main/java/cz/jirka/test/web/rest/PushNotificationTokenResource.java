@@ -80,10 +80,11 @@ public class PushNotificationTokenResource {
     /**
      * {@code GET  /push-notification-tokens} : get all the pushNotificationTokens.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pushNotificationTokens in body.
      */
     @GetMapping("/push-notification-tokens")
-    public List<PushNotificationToken> getAllPushNotificationTokens() {
+    public List<PushNotificationToken> getAllPushNotificationTokens(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all PushNotificationTokens");
         return pushNotificationTokenService.findAll();
     }

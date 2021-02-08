@@ -68,6 +68,7 @@ public class CacheConfiguration {
             createCache(cm, cz.jirka.test.domain.DeviceProfile.class.getName() + ".devices");
             createCache(cm, cz.jirka.test.domain.DeviceConfiguration.class.getName());
             createCache(cm, cz.jirka.test.domain.SMSNotification.class.getName());
+            createCache(cm, cz.jirka.test.domain.PushNotificationToken.class.getName() + ".users");
             // jhipster-needle-ehcache-add-entry
         };
     }

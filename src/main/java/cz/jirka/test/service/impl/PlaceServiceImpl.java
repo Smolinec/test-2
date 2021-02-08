@@ -6,8 +6,6 @@ import cz.jirka.test.repository.PlaceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,19 +37,15 @@ public class PlaceServiceImpl implements PlaceService {
     @Transactional(readOnly = true)
     public List<Place> findAll() {
         log.debug("Request to get all Places");
-        return placeRepository.findAllWithEagerRelationships();
+        return placeRepository.findAll();
     }
 
-
-    public Page<Place> findAllWithEagerRelationships(Pageable pageable) {
-        return placeRepository.findAllWithEagerRelationships(pageable);
-    }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<Place> findOne(Long id) {
         log.debug("Request to get Place : {}", id);
-        return placeRepository.findOneWithEagerRelationships(id);
+        return placeRepository.findById(id);
     }
 
     @Override
