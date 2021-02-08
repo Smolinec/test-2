@@ -9,6 +9,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IPushNotificationToken, PushNotificationToken } from 'app/shared/model/push-notification-token.model';
 import { PushNotificationTokenService } from './push-notification-token.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-push-notification-token-update',
@@ -16,15 +18,18 @@ import { PushNotificationTokenService } from './push-notification-token.service'
 })
 export class PushNotificationTokenUpdateComponent implements OnInit {
   isSaving = false;
+  users: IUser[] = [];
 
   editForm = this.fb.group({
     id: [],
     token: [],
     timestamp: [],
+    users: [],
   });
 
   constructor(
     protected pushNotificationTokenService: PushNotificationTokenService,
+    protected userService: UserService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -37,6 +42,8 @@ export class PushNotificationTokenUpdateComponent implements OnInit {
       }
 
       this.updateForm(pushNotificationToken);
+
+      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
     });
   }
 
@@ -45,6 +52,7 @@ export class PushNotificationTokenUpdateComponent implements OnInit {
       id: pushNotificationToken.id,
       token: pushNotificationToken.token,
       timestamp: pushNotificationToken.timestamp ? pushNotificationToken.timestamp.format(DATE_TIME_FORMAT) : null,
+      users: pushNotificationToken.users,
     });
   }
 
@@ -68,6 +76,7 @@ export class PushNotificationTokenUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       token: this.editForm.get(['token'])!.value,
       timestamp: this.editForm.get(['timestamp'])!.value ? moment(this.editForm.get(['timestamp'])!.value, DATE_TIME_FORMAT) : undefined,
+      users: this.editForm.get(['users'])!.value,
     };
   }
 
@@ -85,5 +94,20 @@ export class PushNotificationTokenUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IUser): any {
+    return item.id;
+  }
+
+  getSelected(selectedVals: IUser[], option: IUser): IUser {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

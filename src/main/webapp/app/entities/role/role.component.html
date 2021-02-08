@@ -24,7 +24,6 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="testMemoryH2App.role.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="testMemoryH2App.role.webUser">Web User</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -32,11 +31,6 @@
                 <tr *ngFor="let role of roles ;trackBy: trackId">
                     <td><a [routerLink]="['/role', role.id, 'view']">{{ role.id }}</a></td>
                     <td>{{ role.name }}</td>
-                    <td>
-                        <span *ngFor="let webUser of role.webUsers; let last = last">
-                            <a class="form-control-static" [routerLink]="['/web-user', webUser?.id, 'view']">{{ webUser.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

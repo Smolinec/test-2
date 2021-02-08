@@ -16,13 +16,6 @@
                     <input type="text" class="form-control" name="name" id="field_name"
                            formControlName="name"/>
                 </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="testMemoryH2App.role.webUser" for="field_webUsers">Web User</label>
-                    <select class="form-control" id="field_webUsers" multiple name="webUsers" formControlName="webUsers">
-                        <option [ngValue]="getSelected(editForm.get('webUsers')!.value, webUserOption)" *ngFor="let webUserOption of webusers; trackBy: trackById">{{ webUserOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

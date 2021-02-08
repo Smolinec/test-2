@@ -1,6 +1,5 @@
 package cz.jirka.test.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,10 +31,12 @@ public class PushNotificationToken implements Serializable {
     @Column(name = "timestamp")
     private ZonedDateTime timestamp;
 
-    @ManyToMany(mappedBy = "pushNotificationTokens")
+    @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private Set<WebUser> webUsers = new HashSet<>();
+    @JoinTable(name = "push_notification_token_user",
+               joinColumns = @JoinColumn(name = "push_notification_token_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Set<User> users = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -72,29 +73,27 @@ public class PushNotificationToken implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public Set<WebUser> getWebUsers() {
-        return webUsers;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public PushNotificationToken webUsers(Set<WebUser> webUsers) {
-        this.webUsers = webUsers;
+    public PushNotificationToken users(Set<User> users) {
+        this.users = users;
         return this;
     }
 
-    public PushNotificationToken addWebUser(WebUser webUser) {
-        this.webUsers.add(webUser);
-        webUser.getPushNotificationTokens().add(this);
+    public PushNotificationToken addUser(User user) {
+        this.users.add(user);
         return this;
     }
 
-    public PushNotificationToken removeWebUser(WebUser webUser) {
-        this.webUsers.remove(webUser);
-        webUser.getPushNotificationTokens().remove(this);
+    public PushNotificationToken removeUser(User user) {
+        this.users.remove(user);
         return this;
     }
 
-    public void setWebUsers(Set<WebUser> webUsers) {
-        this.webUsers = webUsers;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

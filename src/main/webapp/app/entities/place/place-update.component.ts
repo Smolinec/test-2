@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IPlace, Place } from 'app/shared/model/place.model';
 import { PlaceService } from './place.service';
-import { IWebUser } from 'app/shared/model/web-user.model';
-import { WebUserService } from 'app/entities/web-user/web-user.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-place-update',
@@ -16,17 +16,17 @@ import { WebUserService } from 'app/entities/web-user/web-user.service';
 })
 export class PlaceUpdateComponent implements OnInit {
   isSaving = false;
-  webusers: IWebUser[] = [];
+  users: IUser[] = [];
 
   editForm = this.fb.group({
     id: [],
     name: [],
-    webUsers: [],
+    user: [],
   });
 
   constructor(
     protected placeService: PlaceService,
-    protected webUserService: WebUserService,
+    protected userService: UserService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -35,7 +35,7 @@ export class PlaceUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ place }) => {
       this.updateForm(place);
 
-      this.webUserService.query().subscribe((res: HttpResponse<IWebUser[]>) => (this.webusers = res.body || []));
+      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
     });
   }
 
@@ -43,7 +43,7 @@ export class PlaceUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: place.id,
       name: place.name,
-      webUsers: place.webUsers,
+      user: place.user,
     });
   }
 
@@ -66,7 +66,7 @@ export class PlaceUpdateComponent implements OnInit {
       ...new Place(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      webUsers: this.editForm.get(['webUsers'])!.value,
+      user: this.editForm.get(['user'])!.value,
     };
   }
 
@@ -86,18 +86,7 @@ export class PlaceUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IWebUser): any {
+  trackById(index: number, item: IUser): any {
     return item.id;
-  }
-
-  getSelected(selectedVals: IWebUser[], option: IWebUser): IWebUser {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

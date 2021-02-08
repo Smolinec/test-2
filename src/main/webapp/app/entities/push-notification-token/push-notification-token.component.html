@@ -25,6 +25,7 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="testMemoryH2App.pushNotificationToken.token">Token</span></th>
                     <th scope="col" ><span jhiTranslate="testMemoryH2App.pushNotificationToken.timestamp">Timestamp</span></th>
+                    <th scope="col" ><span jhiTranslate="testMemoryH2App.pushNotificationToken.user">User</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -33,6 +34,11 @@
                     <td><a [routerLink]="['/push-notification-token', pushNotificationToken.id, 'view']">{{ pushNotificationToken.id }}</a></td>
                     <td>{{ pushNotificationToken.token }}</td>
                     <td>{{ pushNotificationToken.timestamp | date:'medium' }}</td>
+                    <td>
+                        <span *ngFor="let user of pushNotificationToken.users; let last = last">
+                            {{ user.id }}{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

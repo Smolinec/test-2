@@ -12,11 +12,9 @@
                 <dd>
                     <span>{{ place.name }}</span>
                 </dd>
-                <dt><span jhiTranslate="testMemoryH2App.place.webUser">Web User</span></dt>
+                <dt><span jhiTranslate="testMemoryH2App.place.user">User</span></dt>
                 <dd>
-                    <span *ngFor="let webUser of place.webUsers; let last = last">
-                        <a [routerLink]="['/web-user', webUser?.id, 'view']">{{ webUser.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
+                    {{ place.user?.id }}
                 </dd>
             </dl>
 

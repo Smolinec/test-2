@@ -7,9 +7,14 @@ import cz.jirka.test.service.PushNotificationTokenService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -19,11 +24,13 @@ import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.ZoneOffset;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 import static cz.jirka.test.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -31,6 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for the {@link PushNotificationTokenResource} REST controller.
  */
 @SpringBootTest(classes = TestMemoryH2App.class)
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 public class PushNotificationTokenResourceIT {
@@ -43,6 +51,12 @@ public class PushNotificationTokenResourceIT {
 
     @Autowired
     private PushNotificationTokenRepository pushNotificationTokenRepository;
+
+    @Mock
+    private PushNotificationTokenRepository pushNotificationTokenRepositoryMock;
+
+    @Mock
+    private PushNotificationTokenService pushNotificationTokenServiceMock;
 
     @Autowired
     private PushNotificationTokenService pushNotificationTokenService;
@@ -138,6 +152,26 @@ public class PushNotificationTokenResourceIT {
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(sameInstant(DEFAULT_TIMESTAMP))));
     }
     
+    @SuppressWarnings({"unchecked"})
+    public void getAllPushNotificationTokensWithEagerRelationshipsIsEnabled() throws Exception {
+        when(pushNotificationTokenServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restPushNotificationTokenMockMvc.perform(get("/api/push-notification-tokens?eagerload=true"))
+            .andExpect(status().isOk());
+
+        verify(pushNotificationTokenServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public void getAllPushNotificationTokensWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(pushNotificationTokenServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restPushNotificationTokenMockMvc.perform(get("/api/push-notification-tokens?eagerload=true"))
+            .andExpect(status().isOk());
+
+        verify(pushNotificationTokenServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
     @Test
     @Transactional
     public void getPushNotificationToken() throws Exception {

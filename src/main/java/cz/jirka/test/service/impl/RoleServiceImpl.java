@@ -6,8 +6,6 @@ import cz.jirka.test.repository.RoleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,19 +37,15 @@ public class RoleServiceImpl implements RoleService {
     @Transactional(readOnly = true)
     public List<Role> findAll() {
         log.debug("Request to get all Roles");
-        return roleRepository.findAllWithEagerRelationships();
+        return roleRepository.findAll();
     }
 
-
-    public Page<Role> findAllWithEagerRelationships(Pageable pageable) {
-        return roleRepository.findAllWithEagerRelationships(pageable);
-    }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<Role> findOne(Long id) {
         log.debug("Request to get Role : {}", id);
-        return roleRepository.findOneWithEagerRelationships(id);
+        return roleRepository.findById(id);
     }
 
     @Override

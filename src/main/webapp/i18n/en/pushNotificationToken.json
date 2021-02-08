@@ -18,7 +18,7 @@
       },
       "token": "Token",
       "timestamp": "Timestamp",
-      "webUser": "Web User"
+      "user": "User"
     }
   }
 }

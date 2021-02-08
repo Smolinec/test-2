@@ -1,11 +1,11 @@
-import { IWebUser } from 'app/shared/model/web-user.model';
+import { IUser } from 'app/core/user/user.model';
 
 export interface IPlace {
   id?: number;
   name?: string;
-  webUsers?: IWebUser[];
+  user?: IUser;
 }
 
 export class Place implements IPlace {
-  constructor(public id?: number, public name?: string, public webUsers?: IWebUser[]) {}
+  constructor(public id?: number, public name?: string, public user?: IUser) {}
 }

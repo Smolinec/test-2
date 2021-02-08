@@ -33,6 +33,7 @@
     <include file="config/liquibase/changelog/20210205082445_added_entity_constraints_WebUser.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082545_added_entity_constraints_Role.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082845_added_entity_constraints_DeviceProfile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210205082645_added_entity_constraints_PushNotificationToken.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

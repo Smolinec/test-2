@@ -2,9 +2,6 @@ package cz.jirka.test.service;
 
 import cz.jirka.test.domain.Role;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -27,13 +24,6 @@ public interface RoleService {
      * @return the list of entities.
      */
     List<Role> findAll();
-
-    /**
-     * Get all the roles with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    Page<Role> findAllWithEagerRelationships(Pageable pageable);
 
 
     /**

@@ -18,9 +18,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label jhiTranslate="testMemoryH2App.place.webUser" for="field_webUsers">Web User</label>
-                    <select class="form-control" id="field_webUsers" multiple name="webUsers" formControlName="webUsers">
-                        <option [ngValue]="getSelected(editForm.get('webUsers')!.value, webUserOption)" *ngFor="let webUserOption of webusers; trackBy: trackById">{{ webUserOption.id }}</option>
+                    <label class="form-control-label" jhiTranslate="testMemoryH2App.place.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
                     </select>
                 </div>
             </div>

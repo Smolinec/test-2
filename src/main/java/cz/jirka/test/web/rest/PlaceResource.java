@@ -80,11 +80,10 @@ public class PlaceResource {
     /**
      * {@code GET  /places} : get all the places.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of places in body.
      */
     @GetMapping("/places")
-    public List<Place> getAllPlaces(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<Place> getAllPlaces() {
         log.debug("REST request to get all Places");
         return placeService.findAll();
     }

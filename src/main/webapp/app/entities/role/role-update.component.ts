@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { IRole, Role } from 'app/shared/model/role.model';
 import { RoleService } from './role.service';
-import { IWebUser } from 'app/shared/model/web-user.model';
-import { WebUserService } from 'app/entities/web-user/web-user.service';
 
 @Component({
   selector: 'jhi-role-update',
@@ -16,26 +14,17 @@ import { WebUserService } from 'app/entities/web-user/web-user.service';
 })
 export class RoleUpdateComponent implements OnInit {
   isSaving = false;
-  webusers: IWebUser[] = [];
 
   editForm = this.fb.group({
     id: [],
     name: [],
-    webUsers: [],
   });
 
-  constructor(
-    protected roleService: RoleService,
-    protected webUserService: WebUserService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected roleService: RoleService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ role }) => {
       this.updateForm(role);
-
-      this.webUserService.query().subscribe((res: HttpResponse<IWebUser[]>) => (this.webusers = res.body || []));
     });
   }
 
@@ -43,7 +32,6 @@ export class RoleUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: role.id,
       name: role.name,
-      webUsers: role.webUsers,
     });
   }
 
@@ -66,7 +54,6 @@ export class RoleUpdateComponent implements OnInit {
       ...new Role(),
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      webUsers: this.editForm.get(['webUsers'])!.value,
     };
   }
 
@@ -84,20 +71,5 @@ export class RoleUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IWebUser): any {
-    return item.id;
-  }
-
-  getSelected(selectedVals: IWebUser[], option: IWebUser): IWebUser {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }
