@@ -18,8 +18,6 @@
     <include file="config/liquibase/changelog/20210205082145_added_entity_Device.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082245_added_entity_Temperature.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082345_added_entity_TemperatureValues.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20210205082445_added_entity_WebUser.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20210205082545_added_entity_Role.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082645_added_entity_PushNotificationToken.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082745_added_entity_Application.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082845_added_entity_DeviceProfile.xml" relativeToChangelogFile="false"/>
@@ -30,8 +28,6 @@
     <include file="config/liquibase/changelog/20210205082145_added_entity_constraints_Device.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082245_added_entity_constraints_Temperature.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082345_added_entity_constraints_TemperatureValues.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20210205082445_added_entity_constraints_WebUser.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20210205082545_added_entity_constraints_Role.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082845_added_entity_constraints_DeviceProfile.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210205082645_added_entity_constraints_PushNotificationToken.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->

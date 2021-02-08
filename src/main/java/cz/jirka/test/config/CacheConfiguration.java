@@ -55,12 +55,6 @@ public class CacheConfiguration {
             createCache(cm, cz.jirka.test.domain.Temperature.class.getName() + ".temperatureValues");
             createCache(cm, cz.jirka.test.domain.TemperatureValues.class.getName());
             createCache(cm, cz.jirka.test.domain.TemperatureValues.class.getName() + ".temperatures");
-            createCache(cm, cz.jirka.test.domain.WebUser.class.getName());
-            createCache(cm, cz.jirka.test.domain.WebUser.class.getName() + ".pushNotificationTokens");
-            createCache(cm, cz.jirka.test.domain.WebUser.class.getName() + ".roles");
-            createCache(cm, cz.jirka.test.domain.WebUser.class.getName() + ".places");
-            createCache(cm, cz.jirka.test.domain.Role.class.getName());
-            createCache(cm, cz.jirka.test.domain.Role.class.getName() + ".webUsers");
             createCache(cm, cz.jirka.test.domain.PushNotificationToken.class.getName());
             createCache(cm, cz.jirka.test.domain.PushNotificationToken.class.getName() + ".webUsers");
             createCache(cm, cz.jirka.test.domain.Application.class.getName());
