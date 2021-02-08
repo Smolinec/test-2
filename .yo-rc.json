@@ -36,7 +36,16 @@
     "dtoSuffix": "DTO",
     "otherModules": [],
     "blueprints": [],
-    "prettierJava": true
+    "prettierJava": true,
+    "aws": {
+      "applicationName": "test-memory-h-2",
+      "environmentName": "test-memory-h-2-env",
+      "bucketName": "test-memory-h-2",
+      "instanceType": "t2.micro",
+      "awsRegion": "eu-central-1",
+      "dbName": "TestMemoryH2",
+      "dbInstanceClass": "db.t2.micro"
+    }
   },
   "git-provider": "GitHub",
   "git-company": "Smolinec",

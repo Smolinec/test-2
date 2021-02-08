@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - ./mvnw -Pprod,war clean verify -s config/settings.xml
+      - VERSION=$(./mvnw org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout -s config/settings.xml)
+      - echo ${VERSION}
+#   post_build:
+#     commands:
+#       - echo Build completed on `date`
+#      - mv target/test-memory-h-2-${VERSION}.war test-memory-h-2-${VERSION}.war
+artifacts:
+  type: war
+  files:
+    - target/test-memory-h-2-${VERSION}.war
+  #    - test-memory-h-2-${VERSION}.war
+  discard-paths: yes
