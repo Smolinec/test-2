@@ -1,0 +1,6 @@
+server:
+  port: 8080
+
+logging:
+  file:
+    max-history: 14
