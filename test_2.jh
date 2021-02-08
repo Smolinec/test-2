@@ -33,6 +33,7 @@ relationship ManyToMany{
 	TemperatureValues{temperature} to Temperature{temperatureValues}
 }
 
+/*
 entity WebUser{
     firstName String
     lastName String
@@ -40,16 +41,13 @@ entity WebUser{
     password String
 }
 
+*/
 entity Role{
     name String
 }
 
-relationship ManyToMany{
-	Role{webUser} to WebUser{role}
-}
-
-relationship ManyToMany{
-	Place{webUser} to WebUser{place}
+relationship ManyToOne{
+	Place{user} to User
 }
 
 relationship ManyToOne{
@@ -64,7 +62,7 @@ entity PushNotificationToken{
 service all with serviceImpl except PushNotification
 
 relationship ManyToMany{
-	WebUser{pushNotificationToken} to PushNotificationToken{webUser}
+	PushNotificationToken{user} to User{pushNotificationToken}
 }
 
 entity Application{
